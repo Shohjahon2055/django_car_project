@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Bu mening sayitim</h2>
+
+{{ cars}}
+<a href="{% url 'create' %}"> Create car</a>
+{% for shoh in cars %}
+<p>Id:{{ shoh.id }}</p>
+    <a href="{% url 'detail' shoh.pk %}"><p>Title:{{ shoh.title }}</p> </a>
+<p>Narxi:{{ shoh.price }}$</p>
+<p>Ishlab_chiqarilgan:{{ shoh.release_date }}</p>
+<p>Rangi:{{ shoh.color }}</p>
+{% endfor %}
+</body>
+</html>
