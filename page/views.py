@@ -36,3 +36,38 @@ def create_car(request):
         return redirect("list")
 
     return render(request, "car/create.html")
+
+
+def update_car(request,pk):
+    car=Car.objects.get(pk=pk)
+    if request.method=='POST':
+        brand = request.POST.get("brand",car.brand)
+        model_name = request.POST.get("model_name",car.model_name)
+        color = request.POST.get("color",car.color)
+        year = request.POST.get("year",car.year)
+        price = request.POST.get("price",car.price)
+        release_date = request.POST.get("release_date",car.release_date)
+        engine_type = request.POST.get("engine_type",car.engine_type)
+        horsepower = request.POST.get("horsepower",car.horsepower)
+        mileage = request.POST.get("mileage",car.mileage)
+        fuel_type = request.POST.get("fuel_type",car.fuel_type)
+        transmission = request.POST.get("transmission",car.transmission)
+        country = request.POST.get("country",car.country)
+        car.brand=brand
+        car.model_name=model_name
+        car.color=color
+        car.year=year
+        car.price=price
+        car.release_date=release_date
+        car.engine_type=engine_type
+        car.horsepower=horsepower
+        car.mileage=mileage
+        car.fuel_type=fuel_type
+        car.transmission=transmission
+        car.country=country
+        car.save()
+        return redirect('list')
+    else:
+        return render(request,'car/update.html',{'car':car})
+
+

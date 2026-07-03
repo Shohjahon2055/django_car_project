@@ -3,11 +3,12 @@ from os import name
 from django.contrib import admin
 from django.urls import path
 
-from page.views import get_car, detail_car, create_car
+from page.views import get_car, detail_car, create_car, update_car
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',get_car,name='list'),
     path('detail/<int:pk>/',detail_car,name='detail'),
     path('create/',create_car,name='create'),
+    path('update/<int:pk>/',update_car,name='update'),
 ]

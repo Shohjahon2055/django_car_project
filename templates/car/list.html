@@ -34,10 +34,6 @@
             font-weight:bold;
         }
 
-        .btn-detail{
-            width:100%;
-        }
-
         .header{
             text-align:center;
             margin:40px 0;
@@ -45,6 +41,11 @@
 
         .header h1{
             font-weight:bold;
+        }
+
+        .card-img-top{
+            height:220px;
+            object-fit:cover;
         }
     </style>
 </head>
@@ -79,7 +80,7 @@
 
                 <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800"
                      class="card-img-top"
-                     style="height:220px;object-fit:cover;">
+                     alt="Car Image">
 
                 <div class="card-body">
 
@@ -103,10 +104,20 @@
                         {{ shoh.release_date }}
                     </p>
 
-                    <a href="{% url 'detail' shoh.pk %}"
-                       class="btn btn-primary btn-detail">
-                        View Details
-                    </a>
+                    <!-- Buttons -->
+                    <div class="d-grid gap-2">
+
+                        <a href="{% url 'detail' shoh.pk %}"
+                           class="btn btn-primary">
+                            👁 View Details
+                        </a>
+
+                        <a href="{% url 'update' shoh.pk %}"
+                           class="btn btn-success">
+                            ✏️ Update
+                        </a>
+
+                    </div>
 
                 </div>
 
