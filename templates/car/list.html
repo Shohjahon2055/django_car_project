@@ -2,19 +2,131 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Showroom</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body{
+            background:#f5f7fa;
+        }
+
+        .navbar{
+            background:linear-gradient(90deg,#0d6efd,#6610f2);
+        }
+
+        .card{
+            border:none;
+            border-radius:18px;
+            transition:.3s;
+            box-shadow:0 10px 20px rgba(0,0,0,.08);
+        }
+
+        .card:hover{
+            transform:translateY(-8px);
+            box-shadow:0 15px 35px rgba(0,0,0,.18);
+        }
+
+        .price{
+            color:#198754;
+            font-size:22px;
+            font-weight:bold;
+        }
+
+        .btn-detail{
+            width:100%;
+        }
+
+        .header{
+            text-align:center;
+            margin:40px 0;
+        }
+
+        .header h1{
+            font-weight:bold;
+        }
+    </style>
 </head>
 <body>
-<h2>Bu mening sayitim</h2>
 
-{{ cars}}
-<a href="{% url 'create' %}"> Create car</a>
-{% for shoh in cars %}
-<p>Id:{{ shoh.id }}</p>
-    <a href="{% url 'detail' shoh.pk %}"><p>Title:{{ shoh.title }}</p> </a>
-<p>Narxi:{{ shoh.price }}$</p>
-<p>Ishlab_chiqarilgan:{{ shoh.release_date }}</p>
-<p>Rangi:{{ shoh.color }}</p>
-{% endfor %}
+<nav class="navbar navbar-dark">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+            🚗 Car Showroom
+        </a>
+
+        <a href="{% url 'create' %}" class="btn btn-warning">
+            + Add Car
+        </a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Available Cars</h1>
+        <p class="text-muted">Choose your favorite car</p>
+    </div>
+
+    <div class="row">
+
+        {% for shoh in cars %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card h-100">
+
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800"
+                     class="card-img-top"
+                     style="height:220px;object-fit:cover;">
+
+                <div class="card-body">
+
+                    <h4 class="card-title">
+                        {{ shoh.title }}
+                    </h4>
+
+                    <h3 class="price">
+                        ${{ shoh.price }}
+                    </h3>
+
+                    <hr>
+
+                    <p>
+                        <strong>🎨 Color:</strong>
+                        {{ shoh.color }}
+                    </p>
+
+                    <p>
+                        <strong>📅 Release:</strong>
+                        {{ shoh.release_date }}
+                    </p>
+
+                    <a href="{% url 'detail' shoh.pk %}"
+                       class="btn btn-primary btn-detail">
+                        View Details
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="col-12">
+            <div class="alert alert-warning text-center">
+                <h4>No cars available.</h4>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
 </body>
 </html>

@@ -31,7 +31,6 @@ def create_car(request):
             mileage=0,
             fuel_type="Petrol",
             transmission="Automatic",
-            vin_number="VIN123456789012345",
             country="Uzbekistan",
         )
         return redirect("list")

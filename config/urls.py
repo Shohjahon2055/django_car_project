@@ -9,5 +9,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',get_car,name='list'),
     path('detail/<int:pk>/',detail_car,name='detail'),
-    path('detail/',create_car,name='create')
+    path('create/',create_car,name='create'),
 ]

@@ -26,7 +26,6 @@ class Migration(migrations.Migration):
                 ('fuel_type', models.CharField(max_length=30)),
                 ('transmission', models.CharField(max_length=30)),
                 ('is_available', models.BooleanField(default=True)),
-                ('vin_number', models.CharField(max_length=100, unique=True)),
                 ('country', models.CharField(max_length=100)),
                 ('release_date', models.DateField()),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
